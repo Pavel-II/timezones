@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/downarrow.png</file>
+        <file>res/editdelete.png</file>
+        <file>res/exit.png</file>
+        <file>res/k.ico</file>
+        <file>res/plus.png</file>
+        <file>res/save.png</file>
+        <file>res/uparrow.png</file>
+    </qresource>
+</RCC>
