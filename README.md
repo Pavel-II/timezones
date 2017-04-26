@@ -7,7 +7,7 @@ I`s simple
 $ qmake && make
 ```
 ### How to use
-See mennu by right button mouse click or by menu button on keyboard
+See menu by right button mouse click or by menu button on keyboard
 ### TODO
 Nothing todo
 
