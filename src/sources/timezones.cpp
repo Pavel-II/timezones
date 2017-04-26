@@ -60,9 +60,10 @@ void timezones::menuSetup(){
     menu = new QMenu(this);
     menu->addAction(ui.actionsetup);
     menu->addAction(ui.actionstay);
-    menu->addAction(ui.actionclose);
     menu->addAction(ui.actionFullScreen);
     menu->addAction(ui.actionOrientation_vertical);
+    menu->addSeparator();
+    menu->addAction(ui.actionclose);
     menu->addSeparator();
     menu->addAction(ui.actionAbout);
 }
