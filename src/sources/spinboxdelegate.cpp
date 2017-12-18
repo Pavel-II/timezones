@@ -11,9 +11,15 @@ QWidget *SpinBoxDelegate::createEditor(QWidget *parent,
     const QModelIndex &/* index */) const
 {
     QSpinBox *editor = new QSpinBox(parent);
-    editor->setMaximum(2880);
+    editor->setMaximum(max_v);
+    editor->setMinimum(min_v);
 
     return editor;
+}
+
+void SpinBoxDelegate::set_minmax(int minv, int maxv){
+    min_v = minv;
+    max_v = maxv;
 }
 
 void SpinBoxDelegate::setEditorData(QWidget *editor,
@@ -22,6 +28,7 @@ void SpinBoxDelegate::setEditorData(QWidget *editor,
     int value = index.model()->data(index, Qt::EditRole).toInt();
 
     QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
+    spinBox = static_cast<QSpinBox*>(editor);
     spinBox->setValue(value);
 }
 
@@ -29,6 +36,7 @@ void SpinBoxDelegate::setModelData(QWidget *editor, QAbstractItemModel *model,
                                    const QModelIndex &index) const
 {
     QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
+    spinBox = static_cast<QSpinBox*>(editor);
     spinBox->interpretText();
     int value = spinBox->value();
 

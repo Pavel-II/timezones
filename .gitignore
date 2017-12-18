@@ -11,3 +11,4 @@ qrc_*
 #
 timezones
 .qmake.stash
+Makefile

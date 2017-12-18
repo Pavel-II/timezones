@@ -3,11 +3,12 @@
 #ifndef MAXZONES
 #define MAXZONES 10
 #endif
-#include <QString>
+
 #include <QDialog>
 #include <QTableWidgetItem>
 #include "src/headers/spinboxdelegate.h"
 #include "ui_townset.h"
+#include <QMessageBox>
 
 extern QStringList townnames;
 extern int timeshifts[MAXZONES];
@@ -34,12 +35,10 @@ private slots:
 	void on_pbDel_clicked();
 	void on_pbAdd_clicked();
 	void on_pbExit_clicked();
-//	void saveSettings();
 	void updateButtons();
 
 private:
 	Ui::townsetClass ui;
-    int get_value(int i, int j);
 };
 
 #endif // TOWNSET_H

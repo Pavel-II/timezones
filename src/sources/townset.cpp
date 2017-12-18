@@ -11,9 +11,11 @@ townset::townset(QWidget *parent)
     ui.twTowns->setColumnCount(3);
     ui.twTowns->setHorizontalHeaderLabels(QStringList()                                          
                                           << tr("All times are")                                          
-                                          << tr("The difference with the current time in minutes")
+                                          << tr("The difference with the current time\nin minutes")
                                           << tr("Freq"));
-	ui.twTowns->resizeColumnsToContents ();
+    ui.twTowns->resizeColumnsToContents();
+    ui.twTowns->resizeRowsToContents();
+    ui.twTowns->setColumnWidth(2,63);
     this->setWindowTitle(tr("Dials"));
 	for (int i=0; i<towncnt; i++)
 	{
@@ -26,8 +28,10 @@ townset::townset(QWidget *parent)
         ui.twTowns->setItem(i,2,itemright);
 	}
     SpinBoxDelegate *d = new SpinBoxDelegate();
+    SpinBoxDelegate *d_frq= new SpinBoxDelegate();
+    d_frq->set_minmax(0,60000); // minute
     ui.twTowns->setItemDelegateForColumn(1,d);
-    ui.twTowns->setItemDelegateForColumn(2,d);
+    ui.twTowns->setItemDelegateForColumn(2,d_frq);
 	updateButtons();
 }
 
@@ -132,6 +136,8 @@ void townset::on_pbDown_clicked()
 
 void townset::on_pbSave_clicked()
 {
+//    QMessageBox::information(this,"",ui.twTowns->item(0,1)->text()+"," +ui.twTowns->item(0,2)->text());
+
 	towncnt = ui.twTowns->rowCount();
     //for (int i=towncnt; i<prev_towncnt; i++)
     //{
@@ -141,9 +147,8 @@ void townset::on_pbSave_clicked()
 	for (int i=0; (i<towncnt && i<MAXZONES); i++)
 	{
 		townnames.append(ui.twTowns->item(i,0)->text());
-        //
-        timeshifts[i] =  get_value(i,1);
-        timeFreq[i]   = get_value(i,2);
+        timeFreq[i]   = ui.twTowns->item(i,2)->text().toInt();
+        timeshifts[i] = ui.twTowns->item(i,1)->text().toInt();
 	}
 	if (towncnt==0)
 	{
@@ -154,19 +159,11 @@ void townset::on_pbSave_clicked()
 	}
     emit _saveSettings();
     emit _resetObjects();
+
 }
 
 
 void townset::on_twTowns_currentItemChanged(QTableWidgetItem*,QTableWidgetItem*)
 {
 	updateButtons();
-}
-
-int townset::get_value(int i, int j){
-    QString t = ui.twTowns->item(i,j)->text();
-    if(t.isNull() || t.isEmpty()){
-        return 100;// Default
-    } else {
-        return t.toInt();
-    }
 }

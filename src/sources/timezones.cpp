@@ -170,6 +170,7 @@ void timezones::saveSettings()
 	{
 		settings.setValue(QString("town")+QString::number(i), townnames[i-1].toUtf8());
 		settings.setValue(QString("shft")+QString::number(i), timeshifts[i-1]);
+        settings.setValue(QString("freq")+QString::number(i), timeFreq[i-1]);
 	}
 	settings.endGroup();
 }

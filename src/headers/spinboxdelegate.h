@@ -7,9 +7,12 @@
 
 class SpinBoxDelegate : public QItemDelegate
 {
+private:
+    int min_v = -720;
+    int max_v = 720;
 public:
     SpinBoxDelegate(QObject *parent = 0);
-
+    void set_minmax(int minv, int maxv);
     QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,
                           const QModelIndex &index) const;
 

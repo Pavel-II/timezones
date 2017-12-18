@@ -5,7 +5,7 @@
 lcdclock::lcdclock(QWidget *parent, int frq, int shift)
 : QLCDNumber(parent)
 {
-	setSegmentStyle(Flat);
+    setSegmentStyle(Flat);
     setDigitCount(11);
 	freq = frq;
 	shft = shift;
@@ -22,6 +22,6 @@ lcdclock::~lcdclock()
 
 void lcdclock::updateTime()
 {
-    QTime time = (QTime::currentTime()).addSecs(60*(this->shft));
+    QTime time = (QTime::currentTime()).addSecs(this->shft * 60);
     display(time.toString("hhmm.ss.zzz"));
 }
