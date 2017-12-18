@@ -136,8 +136,6 @@ void townset::on_pbDown_clicked()
 
 void townset::on_pbSave_clicked()
 {
-//    QMessageBox::information(this,"",ui.twTowns->item(0,1)->text()+"," +ui.twTowns->item(0,2)->text());
-
 	towncnt = ui.twTowns->rowCount();
     //for (int i=towncnt; i<prev_towncnt; i++)
     //{

@@ -8,7 +8,6 @@
 #include <QTableWidgetItem>
 #include "src/headers/spinboxdelegate.h"
 #include "ui_townset.h"
-#include <QMessageBox>
 
 extern QStringList townnames;
 extern int timeshifts[MAXZONES];
